@@ -38,21 +38,19 @@ namespace GreenVsRed
 
             var targetCol = int.Parse(targetElementInformation[0]);
             var targetRow = int.Parse(targetElementInformation[1]);
-            var generationCounts = int.Parse(targetElementInformation[2]);            
-
-            
-            
+            var generationCounts = int.Parse(targetElementInformation[2]);         
+                        
             int result = matrix.Nodes[targetRow, targetCol]
                         .GetType() == typeof(GreenNode)? 1:0;
 
             matrix.InitialNeighboursAllocate();
-            printMatrix();
+           
 
             for (int i = 0; i < generationCounts; i++)
             {
                 matrix.CountGreenNeighbours();
                 matrix.UpdateMatrix();
-                printMatrix();
+               
                 if (matrix.Nodes[targetRow, targetCol].GetType() == typeof(GreenNode))
                 {
                     result++;
@@ -61,20 +59,7 @@ namespace GreenVsRed
 
             Console.WriteLine(result);          
            
-            Console.ReadKey();
-            void printMatrix()
-            {
-                for (int row = 0; row < matrix.Height; row++)
-                {
-                    for (int col = 0; col < matrix.Width; col++)
-                    {
-                        Console.Write(matrix.Nodes[row, col].GetType().Name + ", ");
-
-                    }
-                    Console.WriteLine();
-                }
-                Console.WriteLine();
-            }
+            Console.ReadKey();           
         }       
     }
 }
