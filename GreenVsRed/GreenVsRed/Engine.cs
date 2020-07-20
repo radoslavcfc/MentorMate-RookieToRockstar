@@ -1,4 +1,5 @@
 ﻿using GreenVsRed.Nodes;
+using System;
 
 namespace GreenVsRed
 {
@@ -10,7 +11,9 @@ namespace GreenVsRed
             if (matrix != null)
             {
                 this._matrix = matrix;
-            }            
+            }
+
+            else throw new NullReferenceException("Empty matrix");
         }
 
         /// <summary>

@@ -6,9 +6,19 @@ using GreenVsRed.Nodes;
 namespace GreenVsRed
 {
     public static class StartUp
-    { 
+    {
+        //Declaring the static variables, which will be asigned with values from the input
+        //and will be used from the engine class
+        static int width;
+        static int height;
+        static int targetCol;
+        static int targetRow;
+        static int generationCounts;
+        static List<string> inputMatrix = new List<string>();
+        const string commaSeparator = ",";
+
         public static void Main(string[] args)
-        {
+        {           
             try
             {
                 ReadInput();
@@ -49,16 +59,7 @@ namespace GreenVsRed
                 //throw;
             }            
         }
-
-        //Declaring the static variables, which will be asigned with values from the input and will be used from the engine class
-        static int width;
-        static int height;
-        static int targetCol;
-        static int targetRow;
-        static int generationCounts;
-        static List<string> inputMatrix = new List<string>();
-        const string commaSeparator = ",";
-
+       
         /// <summary>
         /// For readability I have moved the static input reading below the Main() method
         /// </summary>
@@ -77,6 +78,7 @@ namespace GreenVsRed
             {
                 validator.WidthAndHeightValidate(width, height);
             }
+
             else
             {
                 validator.WrongFormat();
@@ -98,6 +100,7 @@ namespace GreenVsRed
             {
                 validator.TargetDimensionsValitate(targetCol, targetRow, width, height);
             }
+
             else
             {
                 validator.WrongFormat();
