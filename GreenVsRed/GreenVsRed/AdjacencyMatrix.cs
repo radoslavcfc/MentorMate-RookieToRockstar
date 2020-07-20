@@ -7,47 +7,9 @@ namespace GreenVsRed
 {
     public class AdjacencyMatrix
     {
-        private int _width;
-        private int _height;
-        public int Width 
-        { 
-            get
-            {
-                return this._width;
-            }
-
-            set
-            {
-                if (value > 0 && value <= this._height)
-                {
-                    this._width = value;
-                }
-                else
-                {
-                   // throw new MatrixException("Invalid width value!");
-                }
-            }
-        }
-        public int Height
-        {
-            get
-            {
-                return this._height;
-            }
-
-            set
-            {
-                if (value > 0 && value < 1000 )
-                {
-                    this._height = value;
-                }
-                else
-                {
-                   // throw new MatrixException("Invalid height value!");
-                }
-            }
-        }
-        public INode[,] Nodes{ get; set; }
+        public int Width { get; set; }
+        public int Height { get; set; }
+        public INode[,] Nodes { get; set; }
 
         public List<int[]> UpdateCoordinates { get; set; }
 
@@ -55,9 +17,9 @@ namespace GreenVsRed
         {
             this.Height = height;
             this.Width = width;
-            this.Nodes = new INode[width, height];                   
-        }      
-               
+            this.Nodes = new INode[width, height];
+        }
+
         public void CountGreenNeighbours()
         {
             this.UpdateCoordinates = new List<int[]>();
@@ -71,7 +33,7 @@ namespace GreenVsRed
 
                     foreach (var neighbour in currentNode.Neighbours)
                     {
-                        if (this.Nodes[neighbour[0],neighbour[1]].GetType() == typeof(GreenNode))
+                        if (this.Nodes[neighbour[0], neighbour[1]].GetType() == typeof(GreenNode))
                         {
                             currentNode.GreenNeighboursCount++;
                         }
@@ -79,7 +41,7 @@ namespace GreenVsRed
 
                     if (currentNode.RequiresUpdate())
                     {
-                        this.UpdateCoordinates.Add(new int[] {row, col});
+                        this.UpdateCoordinates.Add(new int[] { row, col });
                     }
                 }
             }
@@ -93,7 +55,7 @@ namespace GreenVsRed
                 var y = item[1];
                 var elementToUpdate = this.Nodes[x, y];
                 var toUpdateType = elementToUpdate.GetType();
-               
+                
                 this.Nodes[x, y] = this.ChangeType(toUpdateType);
 
                 foreach (var neig in elementToUpdate.Neighbours)
@@ -109,11 +71,15 @@ namespace GreenVsRed
             {
                 return new RedNode();
             }
-            else
+
+            else if (toUpdate == typeof(RedNode))
             {
                 return new GreenNode();
             }
+
+            else return null;
         }
+
         public void InitialNeighboursAllocate()
         {
             for (int row = 0; row < Height; row++)

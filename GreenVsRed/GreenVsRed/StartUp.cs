@@ -26,6 +26,11 @@ namespace GreenVsRed
                 //Declaring the matrix and completing it with the data from the input which has been already checked
 
                 var matrix = new AdjacencyMatrix(width, height);
+                if (matrix == null)
+                {
+                    throw new NullReferenceException("Matrix is null");
+                }
+
                 for (int row = 0; row < height; row++)
                 {
                     var inputRow = inputMatrix[row];
