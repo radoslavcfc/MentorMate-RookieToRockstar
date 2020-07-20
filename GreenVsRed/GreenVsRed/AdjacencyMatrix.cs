@@ -1,4 +1,5 @@
-﻿using GreenVsRed.Nodes;
+﻿using GreenVsRed.Exceptions;
+using GreenVsRed.Nodes;
 using System;
 using System.Collections.Generic;
 
@@ -10,13 +11,41 @@ namespace GreenVsRed
         private int _height;
         public int Width 
         { 
-            get; 
-            set; 
+            get
+            {
+                return this._width;
+            }
+
+            set
+            {
+                if (value > 0 && value <= this._height)
+                {
+                    this._width = value;
+                }
+                else
+                {
+                    throw new MatrixException("Invalid width value!");
+                }
+            }
         }
         public int Height
         {
-            get;
-            set;
+            get
+            {
+                return this._height;
+            }
+
+            set
+            {
+                if (value > 0 && value < 1000 )
+                {
+                    this._height = value;
+                }
+                else
+                {
+                    throw new MatrixException("Invalid height value!");
+                }
+            }
         }
         public INode[,] Nodes{ get; set; }
 
@@ -24,8 +53,8 @@ namespace GreenVsRed
 
         public AdjacencyMatrix(int width, int height)
         {
-            this.Width = width;
             this.Height = height;
+            this.Width = width;
             this.Nodes = new INode[width, height];                   
         }      
 
