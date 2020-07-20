@@ -1,55 +1,37 @@
 ﻿using System;
+using System.Collections.Generic;
 using GreenVsRed.Exceptions;
 using GreenVsRed.Nodes;
 
 namespace GreenVsRed
 {
-    public class StartUp
-    {
+    public static class StartUp
+    { 
         public static void Main(string[] args)
         {
             try
             {
-                const string commaSeparator = ",";
-                const string matrixErrorMessage = "Element of the matrix must be either 1 or 0";
-                //Reading the input and extracting the parts
+                ReadInput();
 
-                var gridDimensionElements = Console.ReadLine()
-                    .Split(commaSeparator, StringSplitOptions.RemoveEmptyEntries);
+                //Declaring the matrix and completing it with the data from the input which has been already checked
 
-                int width = int.Parse(gridDimensionElements[0]);
-                int height = int.Parse(gridDimensionElements[1]);
-
-                //Initialize the matrix and assigning the elements of it from the input
                 var matrix = new AdjacencyMatrix(width, height);
-
-                for (int row = 0; row < matrix.Height; row++)
+                for (int row = 0; row < height; row++)
                 {
-                    string colElements = Console.ReadLine();
-
-                    for (int col = 0; col < matrix.Width; col++)
+                    var inputRow = inputMatrix[row];
+                    for (int col = 0; col < width; col++)
                     {
-                        var currentNode = colElements[col];
-                        if (currentNode == '0')
-                        {
-                            matrix.Nodes[row, col] = new RedNode();
-                        }
-                        if (currentNode == '1')
+                        if (inputRow[col] == '1')
                         {
                             matrix.Nodes[row, col] = new GreenNode();
                         }
-                        else
+
+                        if (inputRow[col] == '0')
                         {
-                            throw new MatrixException(matrixErrorMessage);
+                            matrix.Nodes[row, col] = new RedNode();
                         }
                     }
                 }
-
-                var targetElementInformation = Console.ReadLine().Split(commaSeparator);
-
-                var targetCol = int.Parse(targetElementInformation[0]);
-                var targetRow = int.Parse(targetElementInformation[1]);
-                var generationCounts = int.Parse(targetElementInformation[2]);
 
                 //Initialize the Engine class and injecting a reference of the competed matrix.
                 //Invoke the Start(...) method for extracting the result
@@ -60,13 +42,69 @@ namespace GreenVsRed
                 Console.WriteLine(result);
                 Console.ReadKey();
             }
-            catch (MatrixException matrixException)
+
+            catch (InputException matrixException)
             {
                 Console.WriteLine(matrixException.Message);
                 //throw;
+            }            
+        }
+
+        //Declaring the static variables, which will be asigned with values from the input and will be used from the engine class
+        static int width;
+        static int height;
+        static int targetCol;
+        static int targetRow;
+        static int generationCounts;
+        static List<string> inputMatrix = new List<string>();
+        const string commaSeparator = ",";
+
+        /// <summary>
+        /// For readability I have moved the static input reading below the Main() method
+        /// </summary>
+        public static void ReadInput()
+        {
+            var validator = new InputValidator();
+
+            //Reading and checking the input and extracting the parts 
+            string[] gridDimensionElements = Console.ReadLine()
+                .Split(commaSeparator, StringSplitOptions.RemoveEmptyEntries);
+
+            bool parsedWidth = int.TryParse(gridDimensionElements[0], out width);           
+            bool parsedHeight = int.TryParse(gridDimensionElements[1], out height);
+          
+            if (parsedWidth && parsedHeight)
+            {
+                validator.WidthAndHeightValidate(width, height);
+            }
+            else
+            {
+                validator.WrongFormat();
+            }
+
+            for (int row = 0; row < width; row++)
+            {
+                var rowInput = Console.ReadLine();
+                validator.InputRowValidation(rowInput, width);                
+                inputMatrix.Add(rowInput);                
+            }
+
+            var targetElementInformation = Console.ReadLine().Split(commaSeparator);
+
+            bool parsedTargetCol = int.TryParse(gridDimensionElements[0], out targetCol);
+            bool parsedTargetRow = int.TryParse(gridDimensionElements[1], out targetRow);
+
+            if (parsedTargetCol && parsedTargetRow)
+            {
+                validator.TargetDimensionsValitate(targetCol, targetRow, width, height);
+            }
+            else
+            {
+                validator.WrongFormat();
             }
             
-        }       
+            generationCounts = int.Parse(targetElementInformation[2]);
+        }
     }
 }
 

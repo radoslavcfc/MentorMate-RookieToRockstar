@@ -24,7 +24,7 @@ namespace GreenVsRed
                 }
                 else
                 {
-                    throw new MatrixException("Invalid width value!");
+                   // throw new MatrixException("Invalid width value!");
                 }
             }
         }
@@ -43,7 +43,7 @@ namespace GreenVsRed
                 }
                 else
                 {
-                    throw new MatrixException("Invalid height value!");
+                   // throw new MatrixException("Invalid height value!");
                 }
             }
         }
@@ -57,8 +57,7 @@ namespace GreenVsRed
             this.Width = width;
             this.Nodes = new INode[width, height];                   
         }      
-
-       
+               
         public void CountGreenNeighbours()
         {
             this.UpdateCoordinates = new List<int[]>();
