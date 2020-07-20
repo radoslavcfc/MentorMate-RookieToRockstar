@@ -1,1 +1,10 @@
+"GREEN vs RED" - Mentor Mate Devcamp Assignment
+
+START UP CLASS:
 The static StartUp class contains all the static variables which the application needs to read and pass the user`s input.
+There is also a separate method for reading and checking the user input - ReadInput(). The ReadInput() method reads,
+and converts the input and also uses an intance of the InputValidator class. The method passes all the arguments to 
+the validator class for checking. After the input is checked the Main() method creates an instances of the AdjacencyMatrix
+class and the Engine class. Then it initialize all the input from the static variables to the matrix and the Engine.Start() method
+for receiving the result and printing it to the console as required.
+
