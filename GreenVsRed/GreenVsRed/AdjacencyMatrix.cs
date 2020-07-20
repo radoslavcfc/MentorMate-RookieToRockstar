@@ -33,7 +33,7 @@ namespace GreenVsRed
 
                     foreach (var neighbour in currentNode.Neighbours)
                     {
-                        if (this.Nodes[neighbour[0], neighbour[1]].GetType() == typeof(GreenNode))
+                        if (this.Nodes[neighbour[0], neighbour[1]].CurrentValue == '1')
                         {
                             currentNode.GreenNeighboursCount++;
                         }

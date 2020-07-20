@@ -1,7 +1,11 @@
-﻿namespace GreenVsRed.Nodes
+﻿using System.Reflection.Metadata.Ecma335;
+
+namespace GreenVsRed.Nodes
 {
    public class GreenNode : Node
     {
+        public override char CurrentValue { get => '1'; set { } }
+
         public override bool RequiresUpdate()
         {
             

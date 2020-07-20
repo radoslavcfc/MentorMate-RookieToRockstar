@@ -1,10 +1,11 @@
 ﻿namespace GreenVsRed.Nodes
 {
-    public class RedNode : Node
+    public class RedNode : Node 
     {
+        public override char CurrentValue { get => '0'; set { } }
         public override bool RequiresUpdate()
         {
-
+            
             switch (this.GreenNeighboursCount)
             {
                 case 3:
