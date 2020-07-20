@@ -4,7 +4,7 @@ namespace GreenVsRed.Nodes
 {
    public class GreenNode : Node
     {
-        public override char CurrentValue { get => '1'; set { } }
+        public override char CurrentValue { get => '1'; }
 
         public override bool RequiresUpdate()
         {

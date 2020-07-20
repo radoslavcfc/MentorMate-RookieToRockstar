@@ -7,7 +7,7 @@ namespace GreenVsRed.Nodes
         public IUpdate _update;
         public int GreenNeighboursCount { get; set; }
         public List<int[]> Neighbours { get; set; }
-        public abstract char CurrentValue { get; set; }
+        public abstract char CurrentValue { get;}
         public Node()
         {            
             this.Neighbours = new List<int[]>();

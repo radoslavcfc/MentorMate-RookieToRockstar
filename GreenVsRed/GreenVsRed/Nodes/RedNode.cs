@@ -2,7 +2,7 @@
 {
     public class RedNode : Node 
     {
-        public override char CurrentValue { get => '0'; set { } }
+        public override char CurrentValue { get => '0';}
         public override bool RequiresUpdate()
         {
             
