@@ -65,7 +65,6 @@ namespace GreenVsRed
                 var y = item[1];
                 var elementToUpdate = this.Nodes[x, y];
                 var toUpdateType = elementToUpdate.GetType();
-
                
                 this.Nodes[x, y] = this.ChangeType(toUpdateType);
 
