@@ -59,7 +59,7 @@ namespace GreenVsRed
 
         public void TargetDimensionsValitate(int targetCol, int targetRow, int width, int height)
         {
-            if (targetRow > height)
+            if (targetRow > height - 1)
             {
                 throw new InputException(targetRowHeightMessage);
             }
@@ -69,7 +69,7 @@ namespace GreenVsRed
                 throw new InputException(targetRowBottomMessage);
             }
 
-            if (targetCol > width)
+            if (targetCol > width - 1)
             {
                 throw new InputException(targetColWidhtMessage);
 

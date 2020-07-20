@@ -7,7 +7,10 @@ namespace GreenVsRed
         private AdjacencyMatrix _matrix;
         public Engine(AdjacencyMatrix matrix)
         {
-            this._matrix = matrix;
+            if (matrix != null)
+            {
+                this._matrix = matrix;
+            }            
         }
 
         /// <summary>

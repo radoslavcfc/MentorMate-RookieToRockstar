@@ -91,8 +91,8 @@ namespace GreenVsRed
 
             var targetElementInformation = Console.ReadLine().Split(commaSeparator);
 
-            bool parsedTargetCol = int.TryParse(gridDimensionElements[0], out targetCol);
-            bool parsedTargetRow = int.TryParse(gridDimensionElements[1], out targetRow);
+            bool parsedTargetCol = int.TryParse(targetElementInformation[0], out targetCol);
+            bool parsedTargetRow = int.TryParse(targetElementInformation[1], out targetRow);
 
             if (parsedTargetCol && parsedTargetRow)
             {
