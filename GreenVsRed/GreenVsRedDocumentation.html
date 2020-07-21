@@ -7,6 +7,7 @@
     body {
       font-family: "Lato", sans-serif;
     }
+
     .sidenav {
       height: 100%;
       width: 200px;
@@ -67,7 +68,11 @@
         display: none;
     }
     #mainArea p{
-      color:aqua;
+      padding: 3%;
+    }
+    h2{
+      text-align: center;
+      text-decoration: underline;
     }
 
     </style>
@@ -76,9 +81,10 @@
 
     <div class="sidenav">
         <button onclick="Toggle('home')">Home</button>
-        <button onclick="Toggle('startUp')">StartUp Class</button>
-        <button onclick="Toggle('engine')">Engine Class</button>
-        <button onclick="Toggle('inputValidator')">InputValidator</button>
+        <button onclick="Toggle('startUp')">StartUp</button>
+        <button onclick="Toggle('engine')">Engine</button>
+        <button onclick="Toggle('inputValidator')">Input Validator</button>
+        <button onclick="Toggle('adjMatrix')">Adjacency Matrix</button>
         <button class="dropdown-btn">Nodes Folder 
           <i class="fa fa-caret-down"></i>
         </button>
@@ -110,39 +116,56 @@
             the validator class for checking. After the input is checked the Main() method creates an instances of the AdjacencyMatrix
             class and the Engine class. Then it initialize all the input from the static variables to the matrix and the Engine.Start() method
             for receiving the result and printing it to the console as required.
-            </p>
+        </p>
       </div>
 
       <div id="engine" class="hiddenValue">
         <h2>Engine Class</h2>
-        <p>Engine Class Engine Class Engine Class</p>
+        <p>
+          Engine Class Engine Class Engine Class
+        </p>
       </div>
 
       <div id="inputValidator" class="hiddenValue">
         <h2>Input Validator class</h2>
-        <p>It validates the input passed from the console input. Its behaviour is all based on the task requirements. If the input is incorrect
+        <p>
+          It validates the input passed from the console input. Its behaviour is all based on the task requirements. If the input is incorrect
           the class throws to the Main() method and InputException with the relevant error message.
-          </p>
+        </p>
+      </div>
+
+      <div id="adjMatrix" class="hiddenValue">
+        <h2>Adjacency Matrix class</h2>
+        <p>
+          This is the core logic 
+        </p>
       </div>
 
       <div id="iNode" class="hiddenValue">
         <h2>INode interface</h2>
-        <p>EEE</p>
+        <p>
+          EEE
+        </p>
       </div>
 
       <div id="node" class="hiddenValue">
         <h2>Abstract parent Node class</h2>
-        <p>EEE</p>
+        <p>
+          EEE
+          </p>
       </div>
 
       <div id="greenNode" class="hiddenValue">
         <h2>Green Node Child class</h2>
-        <p>EEE</p>
+        <p>
+          This child class implements the main Node structure and adds the relevant implementation of the abstract methods.
+
+        </p>
       </div>
 
       <div id="redNode" class="hiddenValue">
         <h2>Red Node child class</h2>
-        <p>EEE</p>
+        <p>This child class implements the main Node structure and adds the relevant implementation of the abstract methods.</p>
       </div>
       
 </body>
