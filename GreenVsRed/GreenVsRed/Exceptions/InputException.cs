@@ -9,7 +9,7 @@ namespace GreenVsRed.Exceptions
     {
         public InputException(string message) : base(message)
         {
-
+            
         }
     }
 }

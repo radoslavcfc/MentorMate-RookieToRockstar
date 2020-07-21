@@ -36,7 +36,9 @@ namespace GreenVsRed
         }
 
         /// <summary>
-        /// 
+        /// This method iterates the matrix and checks the neighbours of each node element. It updates the GreenNeighboursCount
+        /// for each node on each iteration. In the same iteration the method checks, if the node needs to be updated.
+        /// If it needs to be updated, its coordinates are booked in the UpdateCoordinates property.
         /// </summary>
         public void CountGreenNeighbours()
         {

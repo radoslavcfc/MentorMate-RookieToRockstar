@@ -16,7 +16,11 @@ ENGINE CLASS:
 
 NODES FOLDER:
 	- INODE - Interface
+		INode is the interface which keeps all the abstract structure of the Node Class and its subclasses
 	- NODE - the parent abstract class
 	- GREENNODE - a subclass
 	- REDNODE - a subclass
+
+ADJACENCY MATRIX CLASS:
+
 
