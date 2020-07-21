@@ -36,6 +36,9 @@ namespace GreenVsRed
                     var inputRow = inputMatrix[row];
                     for (int col = 0; col < width; col++)
                     {
+                        //Checks value from input (0 or 1) and creates an object with the relevant type {RedNode() or GreenNode()}
+                        //according to the task requirement
+
                         if (inputRow[col] == '1')
                         {
                             matrix.Nodes[row, col] = new GreenNode();
@@ -48,7 +51,7 @@ namespace GreenVsRed
                     }
                 }
 
-                //Initialize the Engine class and injecting a reference of the competed matrix.
+                //Initialize the Engine class and injecting a reference of the completed matrix.
                 //Invoke the Start(...) method for extracting the result
                 var engine = new Engine(matrix);
                 var result = engine.Start(targetRow, targetCol, generationCounts);
@@ -58,9 +61,9 @@ namespace GreenVsRed
                 Console.ReadKey();
             }
 
-            catch (InputException matrixException)
+            catch (InputException inputException)
             {
-                Console.WriteLine(matrixException.Message);
+                Console.WriteLine(inputException.Message);
                 //throw;
             }            
         }

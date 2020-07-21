@@ -22,5 +22,17 @@ namespace GreenVsRed.Nodes
                         return false;
                 }
             }
+
+        public override INode Update()
+        {
+            var newNode = new RedNode();
+
+            foreach (var neig in this.Neighbours)
+            {
+                newNode.Neighbours.Add(neig);
+            }
+
+            return newNode;
+        }
     }
 }

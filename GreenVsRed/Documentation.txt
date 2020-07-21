@@ -8,3 +8,12 @@ the validator class for checking. After the input is checked the Main() method c
 class and the Engine class. Then it initialize all the input from the static variables to the matrix and the Engine.Start() method
 for receiving the result and printing it to the console as required.
 
+INPUT VALIDATOR CLASS:
+It validate the input passed from the console input. Its behaviour is all based on the task requirements. If the input is incorrect
+the class throws to the Main() method and InputException with the relevant message.
+
+ENGINE CLASS:
+
+NODES FOLDER:
+	- 
+

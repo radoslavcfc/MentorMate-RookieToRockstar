@@ -15,5 +15,16 @@
                     return false;
             }
         }
+        public override INode Update()
+        {
+            var newNode = new GreenNode();
+
+            foreach (var neig in this.Neighbours)
+            {
+                newNode.Neighbours.Add(neig);
+            }
+
+            return newNode;
+        }
     }
 }

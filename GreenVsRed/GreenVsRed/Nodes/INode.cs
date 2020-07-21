@@ -9,6 +9,7 @@ namespace GreenVsRed.Nodes
         int GreenNeighboursCount { get; set; }
         public List<int[]> Neighbours { get; set; }
 
-        bool RequiresUpdate();        
+        bool RequiresUpdate();
+        INode Update();
     }
 }

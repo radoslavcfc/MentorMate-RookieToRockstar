@@ -1,6 +1,4 @@
-﻿using GreenVsRed.Exceptions;
-using GreenVsRed.Nodes;
-using System;
+﻿using GreenVsRed.Nodes;
 using System.Collections.Generic;
 
 namespace GreenVsRed
@@ -54,30 +52,8 @@ namespace GreenVsRed
                 var x = item[0];
                 var y = item[1];
                 var elementToUpdate = this.Nodes[x, y];
-                var toUpdateType = elementToUpdate.GetType();
-                
-                this.Nodes[x, y] = this.ChangeType(toUpdateType);
-
-                foreach (var neig in elementToUpdate.Neighbours)
-                {
-                    Nodes[x, y].Neighbours.Add(neig);
-                }
+                this.Nodes[x, y] = elementToUpdate.Update();                
             }
-        }
-
-        private INode ChangeType(Type toUpdate)
-        {
-            if (toUpdate == typeof(GreenNode))
-            {
-                return new RedNode();
-            }
-
-            else if (toUpdate == typeof(RedNode))
-            {
-                return new GreenNode();
-            }
-
-            else return null;
         }
 
         public void InitialNeighboursAllocate()
