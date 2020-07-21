@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    body {
+      font-family: "Lato", sans-serif;
+    }
+    .sidenav {
+      height: 100%;
+      width: 200px;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color:black;
+      overflow-x: hidden;
+      padding-top: 20px;
+    }
+   
+    .sidenav button, .dropdown-btn {
+      padding: 6px 8px 6px 16px;
+      text-decoration: none;
+      font-size: 20px;
+      color: rgb(20, 240, 20);
+      display: block;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      outline: none;
+    }    
+    
+    .sidenav button:hover, .dropdown-btn:hover {
+      color: red;
+    }
+    
+    .main {
+      margin-left: 200px; 
+      font-size: 20px;
+      padding: 0px 10px;
+    }
+    
+    .active {
+      background-color: green;
+      color: white;
+    }    
+   
+    .dropdown-container {
+      display: none;
+      background-color: #262626;
+      padding-left: 8px;
+    }    
+    
+    .fa-caret-down {
+      float: right;
+      padding-right: 8px;
+    }    
+    
+    @media screen and (max-height: 450px) {
+      .sidenav {padding-top: 15px;}
+      .sidenav a {font-size: 18px;}
+    }
+    .hiddenValue{
+        display: none;
+    }
+
+    </style>
+</head>
+<body>
+
+    <div class="sidenav">
+        <button onclick="Toggle('home')">Home</button>
+        <button onclick="Toggle('startUp')">StartUp Class</button>
+        <button onclick="Toggle('engine')">Engine Class</button>
+        <button onclick="Toggle('inputValidator')">InputValidator</button>
+        <button class="dropdown-btn">Nodes Folder 
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+          <button onclick="Toggle('iNode')">INode</button>
+          <button onclick="Toggle('node')" >Node</button>
+          <button onclick="Toggle('greenNode')">GreenNode</button>
+          <button onclick="Toggle('redNode')">RedNode</button>
+        </div>       
+      </div>
+      
+      <div  class="main">
+        <div id="mainArea">           
+            <h2>Green vs Red </h2>
+            <p>Please read</p>                
+        </div>
+      </div>
+
+      <div id="home" class="hiddenValue">        
+        <h2>Green vs Red </h2>
+        <p>Please read</p>        
+      </div>
+
+      <div id="startUp" class="hiddenValue">
+        <h2>StartUp Class</h2>
+        <p>The static StartUp class contains all the static variables which the application needs to read and pass the user`s input.
+            There is also a separate method for reading and checking the user input - ReadInput(). The ReadInput() method reads,
+            and converts the input and also uses an intance of the InputValidator class. The method passes all the arguments to 
+            the validator class for checking. After the input is checked the Main() method creates an instances of the AdjacencyMatrix
+            class and the Engine class. Then it initialize all the input from the static variables to the matrix and the Engine.Start() method
+            for receiving the result and printing it to the console as required.
+            </p>
+      </div>
+
+      <div id="engine" class="hiddenValue">
+        <h2>Engine Class</h2>
+        <p>Engine Class Engine Class Engine Class</p>
+      </div>
+
+      <div id="inputValidator" class="hiddenValue">
+        <h2>Input Validator class</h2>
+        <p>EEE</p>
+      </div>
+
+      <div id="iNode" class="hiddenValue">
+        <h2>INode interface</h2>
+        <p>EEE</p>
+      </div>
+
+      <div id="node" class="hiddenValue">
+        <h2>Abstract parent Node class</h2>
+        <p>EEE</p>
+      </div>
+
+      <div id="greenNode" class="hiddenValue">
+        <h2>Green Node Child class</h2>
+        <p>EEE</p>
+      </div>
+
+      <div id="redNode" class="hiddenValue">
+        <h2>Red Node child class</h2>
+        <p>EEE</p>
+      </div>
+      
+</body>
+
+<script>
+    //DropDown function:
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+         dropdown[i].addEventListener("click", function() {
+             this.classList.toggle("active");
+             var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } 
+            else {
+             dropdownContent.style.display = "block";
+            }
+         });
+    }
+
+    //Main content toggle function
+    var mainDoc = document.getElementById("mainArea");
+    function Toggle(currentId){
+        var currentElement = document.getElementById(currentId);
+        mainDoc.innerHTML = currentElement.innerHTML;
+    }
+</script>
+</html> 
