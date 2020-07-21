@@ -1,5 +1,8 @@
 ﻿namespace GreenVsRed.Nodes
 {
+    /// <summary>
+    /// Child class implementing the abstract Node logic
+    /// </summary>
     public class RedNode : Node 
     {
         /// <summary>

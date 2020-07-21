@@ -101,7 +101,7 @@ namespace GreenVsRed
         }
 
         /// <summary>
-        /// This methods extends the built-in validation for parsing the string element to a integer.
+        /// This methods extends the built-in validation for parsing the string/char elements to a integer.
         /// It throws the custom exception with the custom message
         /// </summary>
         public void WrongFormat()

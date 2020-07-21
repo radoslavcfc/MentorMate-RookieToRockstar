@@ -3,6 +3,9 @@ using GreenVsRed.Nodes;
 
 namespace GreenVsRed
 {
+    /// <summary>
+    /// Class that runs the iterations of the matrix methods
+    /// </summary>
     public class Engine
     {
         private AdjacencyMatrix _matrix;

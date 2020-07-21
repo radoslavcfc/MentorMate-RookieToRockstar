@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using GreenVsRed.Exceptions;
+
 using GreenVsRed.Nodes;
+using GreenVsRed.Exceptions;
 
 namespace GreenVsRed
 {
@@ -80,7 +81,7 @@ namespace GreenVsRed
         {
             var validator = new InputValidator();
 
-            //Reading and checking the input and extracting and parsing the required parts 
+            //Reading and checking the input and extracting and parsing the required parts             
             string[] gridDimensionElements = Console.ReadLine()
                 .Split(commaSeparator, StringSplitOptions.RemoveEmptyEntries);
 
@@ -119,7 +120,12 @@ namespace GreenVsRed
                 validator.WrongFormat();
             }
 
-            generationsCount = int.Parse(targetElementInformation[2]);
+            bool parsedGenerationsCount = int.TryParse(targetElementInformation[2], out generationsCount);
+
+            if (!parsedGenerationsCount)
+            {
+                validator.WrongFormat();
+            }
         }
     }
 }
