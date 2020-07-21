@@ -15,5 +15,8 @@ the class throws to the Main() method and InputException with the relevant messa
 ENGINE CLASS:
 
 NODES FOLDER:
-	- 
+	- INODE - Interface
+	- NODE - the parent abstract class
+	- GREENNODE - a subclass
+	- REDNODE - a subclass
 

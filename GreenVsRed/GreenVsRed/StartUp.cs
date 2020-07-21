@@ -13,7 +13,7 @@ namespace GreenVsRed
         static int height;
         static int targetCol;
         static int targetRow;
-        static int generationCounts;
+        static int generationsCount;
         static List<string> inputMatrix = new List<string>();
         const string commaSeparator = ",";
 
@@ -54,7 +54,7 @@ namespace GreenVsRed
                 //Initialize the Engine class and injecting a reference of the completed matrix.
                 //Invoke the Start(...) method for extracting the result
                 var engine = new Engine(matrix);
-                var result = engine.Start(targetRow, targetCol, generationCounts);
+                var result = engine.Start(targetRow, targetCol, generationsCount);
 
                 //Printing the result on the console
                 Console.WriteLine(result);
@@ -63,9 +63,14 @@ namespace GreenVsRed
 
             catch (InputException inputException)
             {
-                Console.WriteLine(inputException.Message);
+                Console.WriteLine("Input exception: " + inputException.Message);
                 //throw;
-            }            
+            }        
+
+            catch(Exception exception)
+            {
+                Console.WriteLine(exception.Message);
+            }
         }
        
         /// <summary>
@@ -75,7 +80,7 @@ namespace GreenVsRed
         {
             var validator = new InputValidator();
 
-            //Reading and checking the input and extracting the parts 
+            //Reading and checking the input and extracting and parsing the required parts 
             string[] gridDimensionElements = Console.ReadLine()
                 .Split(commaSeparator, StringSplitOptions.RemoveEmptyEntries);
 
@@ -113,8 +118,8 @@ namespace GreenVsRed
             {
                 validator.WrongFormat();
             }
-            
-            generationCounts = int.Parse(targetElementInformation[2]);
+
+            generationsCount = int.Parse(targetElementInformation[2]);
         }
     }
 }

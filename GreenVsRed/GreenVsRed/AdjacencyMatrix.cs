@@ -6,7 +6,9 @@ namespace GreenVsRed
     public class AdjacencyMatrix
     {
         public int Width { get; set; }
+
         public int Height { get; set; }
+
         public INode[,] Nodes { get; set; }
 
         public List<int[]> UpdateCoordinates { get; set; }

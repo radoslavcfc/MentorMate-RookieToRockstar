@@ -1,14 +1,18 @@
-﻿using System.Reflection.Metadata.Ecma335;
-
-namespace GreenVsRed.Nodes
+﻿namespace GreenVsRed.Nodes
 {
    public class GreenNode : Node
     {
+        /// <summary>
+        /// Automated overriden property returns the value according to the type
+        /// </summary>
         public override char CurrentValue { get => '1'; }
 
+        /// <summary>
+        /// Concrete applying of the rules for checking if the node needs to change its color
+        /// </summary>
+        /// <returns>Boolean result</returns>
         public override bool RequiresUpdate()
-        {
-            
+        {            
                 switch (this.GreenNeighboursCount)
                 {
                     case 0:
@@ -23,6 +27,10 @@ namespace GreenVsRed.Nodes
                 }
             }
 
+        /// <summary>
+        /// Concrete implementation of the abstract method, switching the type(the color) of the node.
+        /// </summary>
+        /// <returns>A new node from type RedNode()</returns>
         public override INode Update()
         {
             var newNode = new RedNode();

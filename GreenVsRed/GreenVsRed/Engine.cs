@@ -1,11 +1,12 @@
-﻿using GreenVsRed.Nodes;
-using System;
+﻿using System;
+using GreenVsRed.Nodes;
 
 namespace GreenVsRed
 {
     public class Engine
     {
         private AdjacencyMatrix _matrix;
+
         public Engine(AdjacencyMatrix matrix)
         {
             if (matrix != null)
@@ -13,11 +14,15 @@ namespace GreenVsRed
                 this._matrix = matrix;
             }
 
-            else throw new NullReferenceException("Empty matrix");
+            else
+            {
+                throw new NullReferenceException("Empty matrix");
+            }
         }
 
         /// <summary>
-        /// This method iterates the matrix methods, for applying all the rules and counting the green appearances of the target element
+        /// This method iterates the matrix methods, for applying all the rules and counting the green appearances 
+        /// of the target element
         /// </summary>
         /// <param name="targetRow">Row of the target element</param>
         /// <param name="targetCol">Column of the target element</param>
@@ -28,20 +33,23 @@ namespace GreenVsRed
             int result = this._matrix.Nodes[targetRow, targetCol]
                         .GetType() == typeof(GreenNode) ? 1 : 0;
 
-            _matrix.InitialNeighboursAllocate();
+            //This method alocates all the neighbours of each element 
 
+            _matrix.InitialNeighboursAllocate();
 
             for (int i = 0; i < generationsCount; i++)
             {
                 _matrix.CountGreenNeighbours();
                 _matrix.UpdateMatrix();
 
-                if (_matrix.Nodes[targetRow, targetCol].GetType() == typeof(GreenNode))
+                //This could be an alternative check :
+                //if (_matrix.Nodes[targetRow, targetCol].GetType() == typeof(GreenNode))
+
+                if (_matrix.Nodes[targetRow, targetCol].CurrentValue == '1')
                 {
                     result++;
                 }
             }
-
             return result;
         }
     }
