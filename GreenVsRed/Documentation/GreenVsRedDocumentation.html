@@ -26,18 +26,7 @@
       </div>
       
       <div  class="main">
-        <div id="mainArea">           
-            <h2>Green vs Red </h2>           
-            <p>
-              This is my documentation in addition to the task implementation in C#.
-              I have implemented the main logic using a custom matrix of nodes. Then I have constructed an inheritance structure
-              of nodes, where the child classes of the Node class are implementing the logic depending on the relevant "color" of the node.
-              Please see the diagram below, and also you can see explanation for each class on the left side bar.
-            </p>   
-            <figure>
-              <img class="largeFigure" src="ClassStructureImages\ClassDiagram.jpg" alt="Class Diagram">
-              <figcaption>Class Diagram</figcaption>
-            </figure>           
+        <div id="mainArea">          
         </div>
       </div>
 
@@ -65,7 +54,7 @@
             There is also a separate method for reading and checking the user input - ReadInput(). The ReadInput() method reads,
             and converts the input and also uses an intance of the InputValidator class. The method passes all the arguments to 
             the validator class for checking. After the input is checked the Main() method creates an instances of the AdjacencyMatrix
-            class and the Engine class. Then it initialize all the input from the static variables to the matrix and the Engine.Start() method
+            class and the Engine class. Then it initialize all the input from the static variables to the matrix and runs the Engine.Start() method
             for receiving the result and printing it to the console as required.
         </p>
       </div>
@@ -77,7 +66,9 @@
           <figcaption>Engine class</figcaption>
         </figure> 
         <p>
-         The Engine class is the core motor of the app.
+         The Engine class receives an injected reference of the AdjacencyMatrix class. Then it runs all the core public methods of the matrix in the Start()
+         method. The class is responsible for running and iterating all the core behaviour of the matrix in order to fetch the requested count of appearances of 
+         the green node in the matrix.
         </p>
       </div>
 
