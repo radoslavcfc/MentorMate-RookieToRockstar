@@ -83,3 +83,7 @@ body {
   .floatFigure{
     float: left;
   }
+ 
+  summary{
+    outline:none;
+  }

@@ -25,7 +25,9 @@
         </div>       
       </div>
       
-      <div  class="main">
+      <!--The main container of the documentation-->
+
+      <div class="main">
         <div id="mainArea">          
         </div>
       </div>
@@ -91,8 +93,37 @@
           <figcaption>Adjacency Matrix class</figcaption>
         </figure> 
         <p>
-          This is the core logic 
+          This class is a custom implementation of the Adjacency Matrix data structure. It contains a matrix with node elements, as the node`s 
+          logic is separated. The properties of the matrix are responsible for the sizes and the collection of the nodes. There is also a property 
+          for keeping the addresses of all the node elements which has to be updated. 
+          Then the methods are keeping all the logic that is essential for all the operations that could be done over the custom matrix.
+          The program will first book the addresses of the elements that need to be updated and after that it does the updating on a different step.
+          This will protect from element to be changed on the go and change the final result to an incorrect value.
         </p>
+        <details>
+            <summary>- public void CountGreenNeighbours()</summary>
+            This method iterates the matrix and checks the neighbours of each node element. It updates the GreenNeighboursCount
+             for each node on each iteration. In the same iteration the method checks, if the node needs to be updated.
+             If it needs to be updated, its coordinates are booked in the UpdateCoordinates property.              
+        </details>
+
+        <details>
+            <summary>- public void UpdateMatrix()</summary>
+            Method for updating the matrix on each iteration. It finds all the nodes that are booked in the UpdateCoordinates 
+           property.
+        </details>
+
+        <details>
+           <summary>- public void InitialNeighboursAllocate()</summary>
+           This method is ran only once after the matrix is filled up with its data. This will save neighbour allocation on each iteration. 
+        </details>
+
+        <details>
+           <summary>- private void NeighboursAllocate(Node currentNode, int row, int col)</summary>
+           Separated method responsible only for allocating the neighbours which are checked first if they are in the matrix
+           boundaries
+        </details>
+       
       </div>
 
       <div id="iNode" class="hiddenValue">
@@ -102,18 +133,21 @@
           <figcaption>The node inheriatance structure class</figcaption>
         </figure>
         <p>
-          The interface holds the skeleton
+          The interface holds the actual structure of the Node element. It keeps all the members, which needs to be implemented 
+          in all the classes that are using this contract.
         </p>
       </div>
 
       <div id="node" class="hiddenValue">
-        <h2>Abstract parent Node class</h2>
+        <h2>Abstract Node class</h2>
         <figure class="floatFigure">
           <img  src="ClassStructureImages\NodeInheritance.jpg" alt="Node inherit structure class">
           <figcaption>The node inheriatance structure class</figcaption>
         </figure>
         <p>
-          EEE
+          The abstract parent class Node implements the INode interface and its members. It contains the base properties which are typical
+          for the Node element and also keeps abstract members (properties and methods), which are left for the more specific child 
+          classes to implement.
           </p>
       </div>
 
@@ -125,7 +159,10 @@
         </figure>
         <p>
           This child class implements the main Node structure and adds the relevant implementation of the abstract methods.
-
+          It`s property CurrentValue will return the char value of '1'. The boolean RequireUpdate() method will return true if the 
+          count of the green neighbours of the node is equal to 0, 1, 4, 5, 7 or 8. If it is equal to 2, 3, or 6 it will not
+          require an update. 
+          Then the Update() method returns a new Node with "colored red" of type RedNode, and will copy the neighbours.
         </p>
       </div>
 
@@ -135,7 +172,11 @@
           <img  src="ClassStructureImages\NodeInheritance.jpg" alt="Node inherit structure class">
           <figcaption>The node inheriatance structure class</figcaption>
         </figure>
-        <p>This child class implements the main Node structure and adds the relevant implementation of the abstract methods.</p>
+        <p> This child class implements the main Node structure and adds the relevant implementation of the abstract methods.
+          It`s property CurrentValue will return the char value of '0'. The boolean RequireUpdate() method will return true only if the 
+          count of the green neighbours of the node is equal to 3 or 6. If the count is any different than the stated one the node will not be
+          updated and will stay the same.
+          Then the Update() method returns a new Node GreenNode, and will copy the neighbours.</p>
       </div>      
 </body>
 
