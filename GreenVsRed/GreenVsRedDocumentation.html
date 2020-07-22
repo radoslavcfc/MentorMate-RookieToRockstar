@@ -70,18 +70,27 @@
     #mainArea p{
       padding: 3%;
     }
+
     h2{
       text-align: center;
       text-decoration: underline;
     }
-    img{
+
+    .largeFigure{
       width: 80%;
       height: 40%;
       display: block;
       margin-left: auto;
       margin-right: auto;
     }
+    figcaption{
+      text-align: center;
+    }
 
+    .floatFigure{
+      float: left;
+    }
+    
     </style>
 </head>
 <body>
@@ -105,20 +114,40 @@
       
       <div  class="main">
         <div id="mainArea">           
-            <h2>Green vs Red </h2>
-            <img src="ClassStructures\ClassDiagram.jpg">
-            <p>Please read</p>                
+            <h2>Green vs Red </h2>           
+            <p>
+              This is my documentation in addition to the task implementation in C#.
+              I have implemented the main logic using a custom matrix of nodes. Then I have implemented an inheritance structure
+              of nodes, where the child classes of the Node class are implementing the logic depending on the relevant "color" of the node.
+              Please see the diagram below, and also you can see explanation for each class on the left side bar.
+            </p>   
+            <figure>
+              <img class="largeFigure" src="ClassStructureImages\ClassDiagram.jpg" alt="Class Diagram">
+              <figcaption>Class Diagram</figcaption>
+            </figure>           
         </div>
       </div>
 
       <div id="home" class="hiddenValue">        
-        <h2>Green vs Red </h2>
-        <img src="ClassStructures\ClassDiagram.jpg">
-        <p>Please read</p>        
+        <h2>Green vs Red </h2>           
+            <p>
+              This is my documentation in addition to the task implementation in C#.
+              I have implemented the main logic using a custom matrix of nodes. Then I have implemented an inheritance structure
+              of nodes, where the child classes of the Node class are implementing the logic depending on the relevant "color" of the node.
+              Please see the diagram below, and also you can see explanation for each class on the left side bar.
+            </p>   
+            <figure >
+              <img class="largeFigure" src="ClassStructureImages\ClassDiagram.jpg" alt="Class Diagram">
+              <figcaption>Class Diagram</figcaption>
+            </figure>   
       </div>
 
       <div id="startUp" class="hiddenValue">
         <h2>StartUp Class</h2>
+        <figure class="floatFigure">
+          <img  src="ClassStructureImages\StartUp.jpg" alt="Start Up class">
+          <figcaption>Start Up class</figcaption>
+        </figure>  
         <p>The static StartUp class contains all the static variables which the application needs to read and pass the user`s input.
             There is also a separate method for reading and checking the user input - ReadInput(). The ReadInput() method reads,
             and converts the input and also uses an intance of the InputValidator class. The method passes all the arguments to 
@@ -130,13 +159,21 @@
 
       <div id="engine" class="hiddenValue">
         <h2>Engine Class</h2>
+        <figure class="floatFigure">
+          <img  src="ClassStructureImages\Engine.jpg" alt="Engine class">
+          <figcaption>Engine class</figcaption>
+        </figure> 
         <p>
-         This class takes 
+         The Engine class is the core motor of the app.
         </p>
       </div>
 
       <div id="inputValidator" class="hiddenValue">
         <h2>Input Validator class</h2>
+        <figure class="floatFigure">
+          <img  src="ClassStructureImages\InpVal.jpg" alt="Input Validator class">
+          <figcaption>Input validator class</figcaption>
+        </figure> 
         <p>
           It validates the input passed from the console input. Its behaviour is all based on the task requirements. If the input is incorrect
           the class throws to the Main() method and InputException with the relevant error message.
@@ -145,6 +182,10 @@
 
       <div id="adjMatrix" class="hiddenValue">
         <h2>Adjacency Matrix class</h2>
+        <figure class="floatFigure">
+          <img  src="ClassStructureImages\AdjMat.jpg" alt="AdjacencyMatrix class">
+          <figcaption>Adjacency Matrix class</figcaption>
+        </figure> 
         <p>
           This is the core logic 
         </p>
@@ -152,6 +193,10 @@
 
       <div id="iNode" class="hiddenValue">
         <h2>INode interface</h2>
+        <figure class="floatFigure">
+          <img  src="ClassStructureImages\NodeInheritance.jpg" alt="Node inherit structure class">
+          <figcaption>The node inheriatance structure class</figcaption>
+        </figure>
         <p>
           The interface holds the skeleton
         </p>
@@ -159,6 +204,10 @@
 
       <div id="node" class="hiddenValue">
         <h2>Abstract parent Node class</h2>
+        <figure class="floatFigure">
+          <img  src="ClassStructureImages\NodeInheritance.jpg" alt="Node inherit structure class">
+          <figcaption>The node inheriatance structure class</figcaption>
+        </figure>
         <p>
           EEE
           </p>
@@ -166,6 +215,10 @@
 
       <div id="greenNode" class="hiddenValue">
         <h2>Green Node Child class</h2>
+        <figure class="floatFigure">
+          <img  src="ClassStructureImages\NodeInheritance.jpg" alt="Node inherit structure class">
+          <figcaption>The node inheriatance structure class</figcaption>
+        </figure>
         <p>
           This child class implements the main Node structure and adds the relevant implementation of the abstract methods.
 
@@ -174,6 +227,10 @@
 
       <div id="redNode" class="hiddenValue">
         <h2>Red Node child class</h2>
+        <figure class="floatFigure">
+          <img  src="ClassStructureImages\NodeInheritance.jpg" alt="Node inherit structure class">
+          <figcaption>The node inheriatance structure class</figcaption>
+        </figure>
         <p>This child class implements the main Node structure and adds the relevant implementation of the abstract methods.</p>
       </div>
       
