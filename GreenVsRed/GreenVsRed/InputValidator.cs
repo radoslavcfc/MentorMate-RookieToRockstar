@@ -63,8 +63,7 @@ namespace GreenVsRed
             {
                 if (row[i] != '0' && row[i] !='1')
                 {
-                    throw new InputException(rowInputElementsMessage);
-                    
+                    throw new InputException(rowInputElementsMessage);                    
                 }
             }
         }
