@@ -1,0 +1,86 @@
+body {
+    font-family: "Lato", sans-serif;
+  }
+
+  .sidenav {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color:black;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+ 
+  .sidenav button, .dropdown-btn {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: rgb(20, 240, 20);
+    display: block;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+  }    
+  
+  .sidenav button:hover, .dropdown-btn:hover {
+    color: red;
+  }
+  
+  .main {
+    margin-left: 200px; 
+    font-size: 20px;
+    padding: 0px 10px;
+  }
+  
+  .active {
+    background-color: green;
+    color: white;
+  }    
+ 
+  .dropdown-container {
+    display: none;
+    background-color: #262626;
+    padding-left: 8px;
+  }    
+  
+  .fa-caret-down {
+    float: right;
+    padding-right: 8px;
+  }    
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+  .hiddenValue{
+      display: none;
+  }
+  #mainArea p{
+    padding: 3%;
+  }
+
+  h2{
+    text-align: center;
+    text-decoration: underline;
+  }
+
+  .largeFigure{
+    width: 80%;
+    height: 40%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  figcaption{
+    text-align: center;
+  }
+
+  .floatFigure{
+    float: left;
+  }
