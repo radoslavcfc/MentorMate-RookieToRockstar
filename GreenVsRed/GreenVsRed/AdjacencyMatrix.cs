@@ -1,4 +1,5 @@
 ﻿using GreenVsRed.Nodes;
+using System;
 using System.Collections.Generic;
 
 namespace GreenVsRed
@@ -8,6 +9,10 @@ namespace GreenVsRed
     /// </summary>
     public class AdjacencyMatrix
     {
+        //Constants hodling the error messages
+        private const string nullNodeMessage = "Current node is null";
+        private const string nullUpdateCoordinatesMessage = "Collection UpdateCoordinates is null";
+
         /// <summary>
         /// Matrix width 
         /// </summary>
@@ -49,6 +54,12 @@ namespace GreenVsRed
                 for (int col = 0; col < Width; col++)
                 {
                     var currentNode = Nodes[row, col];
+
+                    if (currentNode == null)
+                    {
+                        throw new NullReferenceException(nullNodeMessage);
+                    }
+
                     currentNode.GreenNeighboursCount = 0;
 
                     foreach (var neighbour in currentNode.Neighbours)
@@ -73,6 +84,11 @@ namespace GreenVsRed
         /// </summary>
         public void UpdateMatrix()
         {
+            if (this.UpdateCoordinates == null)
+            {
+                throw new NullReferenceException(nullUpdateCoordinatesMessage);
+            }
+
             foreach (var item in this.UpdateCoordinates)
             {
                 var x = item[0];
@@ -93,6 +109,12 @@ namespace GreenVsRed
                 for (int col = 0; col < Width; col++)
                 {
                     var currentNode = Nodes[row, col];
+
+                    if (currentNode == null)
+                    {
+                        throw new NullReferenceException(nullNodeMessage);
+                    }
+
                     this.NeighboursAllocate((Node)currentNode, row, col);
                 }
             }

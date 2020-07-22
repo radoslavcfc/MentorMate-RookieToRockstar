@@ -33,8 +33,16 @@ namespace GreenVsRed
         /// <returns>It returns how many times the target element was Green (1)</returns>
         public int Start(int targetRow, int targetCol, int generationsCount)
         {
-            int result = this._matrix.Nodes[targetRow, targetCol]
-                        .GetType() == typeof(GreenNode) ? 1 : 0;
+            var currentNode = this._matrix.Nodes[targetRow, targetCol];
+
+            if (currentNode == null)
+            {
+                throw new NullReferenceException("Current node is null");
+            }
+
+            int result = currentNode.GetType() == typeof(GreenNode) ? 1 : 0;
+                                  //.CurrentValue == '1'; alternative with type checking above.
+
 
             //This method alocates all the neighbours of each element 
 

@@ -17,6 +17,8 @@ namespace GreenVsRed
         static int generationsCount;
         static List<string> inputMatrix = new List<string>();
         const string commaSeparator = ",";
+        const string nullMatrixMessage = "Matrix is null";
+        const string inputErrorMessage = "Input exception: ";
 
         public static void Main(string[] args)
         {           
@@ -27,9 +29,10 @@ namespace GreenVsRed
                 //Declaring the matrix and completing it with the data from the input which has been already checked
 
                 var matrix = new AdjacencyMatrix(width, height);
+
                 if (matrix == null)
                 {
-                    throw new NullReferenceException("Matrix is null");
+                    throw new NullReferenceException(nullMatrixMessage);
                 }
 
                 for (int row = 0; row < height; row++)
@@ -64,7 +67,7 @@ namespace GreenVsRed
 
             catch (InputException inputException)
             {
-                Console.WriteLine("Input exception: " + inputException.Message);
+                Console.WriteLine(inputErrorMessage + inputException.Message);
                 //throw;
             }        
 

@@ -10,7 +10,7 @@ namespace GreenVsRed
         private const string positiveHeightMessage = "Height must be positive number bigger than zero!";
         private const string heightLimitMessage = "Height must a number up to 1000!";
         private const string widthLimitMessage = "Width must me smaller or equal to the height!";
-        private const string rowLimitMessage = "Row input must not be longer than the width of the matrix";
+        private const string rowLimitMessage = "Row input must the with the same lenght as the width of the matrix";
         private const string rowInputElementsMessage = "Elements in the matrix must be either 1 or 0";
         private const string targetRowHeightMessage = "The target height must not be bigger than the matrix height";
         private const string targetRowBottomMessage = "The target height must be a positive number";
@@ -53,18 +53,18 @@ namespace GreenVsRed
         /// <param name="row">The row from the input</param>
         /// <param name="width">The width of the matrix</param>
         public void InputRowValidation(string row, int width)
-        {
-            if (row.Length != width)
-            {
-                throw new InputException(rowLimitMessage);
-            }
-
+        {            
             for (int i = 0; i < row.Length; i++)
             {
                 if (row[i] != '0' && row[i] !='1')
                 {
                     throw new InputException(rowInputElementsMessage);                    
                 }
+            }
+
+            if (row.Length != width)
+            {
+                throw new InputException(rowLimitMessage);
             }
         }
 
