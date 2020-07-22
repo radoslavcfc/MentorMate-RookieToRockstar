@@ -14,7 +14,7 @@ body {
     padding-top: 20px;
   }
  
-  .sidenav button, .dropdown-btn {
+  .sidenav div:not(.dropdown-container), .dropdown-btn {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     font-size: 20px;
@@ -27,8 +27,13 @@ body {
     cursor: pointer;
     outline: none;
   }    
-  
-  .sidenav button:hover, .dropdown-btn:hover {
+
+  .dropdown-container {
+    display: none;    
+    padding-left: 8px;
+  }  
+
+  .sidenav div:hover, .dropdown-btn:hover {
     color: red;
   }
   
@@ -41,12 +46,6 @@ body {
   .active {
     background-color: green;
     color: white;
-  }    
- 
-  .dropdown-container {
-    display: none;
-    background-color: #262626;
-    padding-left: 8px;
   }    
   
   .fa-caret-down {

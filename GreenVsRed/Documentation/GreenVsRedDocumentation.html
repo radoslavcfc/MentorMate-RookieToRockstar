@@ -7,21 +7,21 @@
 </head>
 
 <body>
-
     <div class="sidenav">
-        <button onclick="Toggle('home')">Home</button>
-        <button onclick="Toggle('startUp')">StartUp</button>
-        <button onclick="Toggle('engine')">Engine</button>
-        <button onclick="Toggle('inputValidator')">Input Validator</button>
-        <button onclick="Toggle('adjMatrix')">Adjacency Matrix</button>
+        <div onclick="Toggle('home')">Home</div>
+        <div onclick="Toggle('startUp')">StartUp</div>
+        <div onclick="Toggle('engine')">Engine</div>
+        <div onclick="Toggle('inputValidator')">Input Validator</div>
+        <div onclick="Toggle('adjMatrix')">Adjacency Matrix</div>
+        
         <button class="dropdown-btn">Nodes Folder 
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-          <button onclick="Toggle('iNode')">INode</button>
-          <button onclick="Toggle('node')" >Node</button>
-          <button onclick="Toggle('greenNode')">GreenNode</button>
-          <button onclick="Toggle('redNode')">RedNode</button>
+          <div onclick="Toggle('iNode')">INode</div>
+          <div onclick="Toggle('node')" >Node</div>
+          <div onclick="Toggle('greenNode')">GreenNode</div>
+          <div onclick="Toggle('redNode')">RedNode</div>
         </div>       
       </div>
       
@@ -30,7 +30,7 @@
             <h2>Green vs Red </h2>           
             <p>
               This is my documentation in addition to the task implementation in C#.
-              I have implemented the main logic using a custom matrix of nodes. Then I have implemented an inheritance structure
+              I have implemented the main logic using a custom matrix of nodes. Then I have constructed an inheritance structure
               of nodes, where the child classes of the Node class are implementing the logic depending on the relevant "color" of the node.
               Please see the diagram below, and also you can see explanation for each class on the left side bar.
             </p>   
@@ -45,7 +45,7 @@
         <h2>Green vs Red </h2>           
             <p>
               This is my documentation in addition to the task implementation in C#.
-              I have implemented the main logic using a custom matrix of nodes. Then I have implemented an inheritance structure
+              I have implemented the main logic using a custom matrix of nodes. Then I have constructed an inheritance structure
               of nodes, where the child classes of the Node class are implementing the logic depending on the relevant "color" of the node.
               Please see the diagram below, and also you can see explanation for each class on the left side bar.
             </p>   
@@ -148,29 +148,5 @@
       </div>      
 </body>
 
-<script>
-    //DropDown function:
-    var dropdown = document.getElementsByClassName("dropdown-btn");
-    var i;
-
-    for (i = 0; i < dropdown.length; i++) {
-         dropdown[i].addEventListener("click", function() {
-             this.classList.toggle("active");
-             var dropdownContent = this.nextElementSibling;
-            if (dropdownContent.style.display === "block") {
-                dropdownContent.style.display = "none";
-            } 
-            else {
-             dropdownContent.style.display = "block";
-            }
-         });
-    }
-
-    //Main content toggle function
-    var mainDoc = document.getElementById("mainArea");
-    function Toggle(currentId){
-        var currentElement = document.getElementById(currentId);
-        mainDoc.innerHTML = currentElement.innerHTML;
-    }
-</script>
+<script src="documentationScripts.js"></script> 
 </html> 
