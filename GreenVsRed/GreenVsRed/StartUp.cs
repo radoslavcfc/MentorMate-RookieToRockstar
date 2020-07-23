@@ -84,7 +84,10 @@ namespace GreenVsRed
         {
             var validator = new InputValidator();
 
-            //Reading and checking the input and extracting and parsing the required parts             
+            //Reading and checking the input and extracting and parsing the required parts 
+            //I have decided to do all the element checks on the user's input level
+            //The alternative place for the checks of the elements can be the relevant 
+            //class (Node or AdjacencyMatrix), when asigning.
             string[] gridDimensionElements = Console.ReadLine()
                 .Split(commaSeparator, StringSplitOptions.RemoveEmptyEntries);
 
