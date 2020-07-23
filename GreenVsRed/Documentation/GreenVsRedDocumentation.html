@@ -35,60 +35,110 @@
 
       <div id="home" class="hiddenValue">        
         <h2>Green vs Red </h2>           
-            <p>
-              This is my documentation in addition to the task implementation in C#.
-              I have implemented the main logic using a custom matrix of nodes. Then I have constructed an inheritance structure
-              of nodes, where the child classes of the Node class are implementing the logic depending on the relevant "color" of the node.
-              Please see the diagram below, and also you can see explanation for each class on the left side bar.
-            </p>   
-            <figure >
-              <img class="largeFigure" src="ClassStructureImages\ClassDiagram.jpg" alt="Class Diagram">
-              <figcaption>Class Diagram</figcaption>
-            </figure>   
+           
+        <p>
+           This is my documentation in addition to the task implementation in C#.
+           I have implemented the main logic using a custom matrix of nodes. Then I have constructed an inheritance structure
+           of nodes, where the child classes of the Node class are implementing the logic depending on the relevant "color" of the node.
+           Please see the diagram below, and also you can see explanation for each class on the left side bar.
+        </p>
+
+        <figure >
+          <img class="largeFigure" src="ClassStructureImages\ClassDiagram.jpg" alt="Class Diagram">
+          <figcaption>Class Diagram</figcaption>
+        </figure>   
       </div>
 
       <div id="startUp" class="hiddenValue">
         <h2>StartUp Class</h2>
+
         <figure class="floatFigure">
           <img  src="ClassStructureImages\StartUp.jpg" alt="Start Up class">
           <figcaption>Start Up class</figcaption>
-        </figure>  
-        <p>The static StartUp class contains all the static variables which the application needs to read and pass the user`s input.
-            There is also a separate method for reading and checking the user input - ReadInput(). The ReadInput() method reads,
-            and converts the input and also uses an intance of the InputValidator class. The method passes all the arguments to 
-            the validator class for checking. After the input is checked the Main() method creates an instances of the AdjacencyMatrix
-            class and the Engine class. Then it initialize all the input from the static variables to the matrix and runs the Engine.Start() method
-            for receiving the result and printing it to the console as required.
+        </figure> 
+
+        <p>
+          The static StartUp class contains all the static variables which the application needs to read and pass the user`s input.
+          There is also a separate method for reading and checking the user input - ReadInput(). The Main() method fetches the result 
+          to the console.
         </p>
+
+        <details>
+           <summary>public static void ReadInput()</summary>              
+           The ReadInput() method reads, and converts the input and also uses an intance of the InputValidator class. The method passes
+           all the arguments to the validator class for checking.         
+        </details>
+
+        <details>
+           <summary>public static void Main()</summary>            
+           The method creates an instances of the AdjacencyMatrix class and the Engine class. Then it asigns all the input from the 
+           static variables to the matrix and runs the Engine.Start() method passing the target element data for receiving the result
+           and printing it to the console as required.         
+        </details>     
+        
       </div>
 
       <div id="engine" class="hiddenValue">
         <h2>Engine Class</h2>
+
         <figure class="floatFigure">
           <img  src="ClassStructureImages\Engine.jpg" alt="Engine class">
           <figcaption>Engine class</figcaption>
         </figure> 
+
         <p>
-         The Engine class receives an injected reference of the AdjacencyMatrix class. Then it runs all the core public methods of the matrix in the Start()
-         method. The class is responsible for running and iterating all the core behaviour of the matrix in order to fetch the requested count of appearances of 
-         the green node in the matrix.
+          The Engine class receives an injected reference of the AdjacencyMatrix class. Then it runs all the core public methods of the matrix in the Start()
+          method. The class is responsible for running and iterating all the core behaviour of the matrix in order to fetch the requested count of appearances of 
+          the green node in the matrix.
         </p>
+
+        <details>
+          <summary>public int Start(int targetRow, int targetCol, int generationsCount)</summary>                      
+          This method iterates the matrix methods, for applying all the rules and counting the green appearances 
+          of the target element       
+        </details>
+
       </div>
 
       <div id="inputValidator" class="hiddenValue">
         <h2>Input Validator class</h2>
+
         <figure class="floatFigure">
           <img  src="ClassStructureImages\InpVal.jpg" alt="Input Validator class">
           <figcaption>Input validator class</figcaption>
         </figure> 
+
         <p>
           It validates the input passed from the console input. Its behaviour is all based on the task requirements. If the input is incorrect
           the class throws to the Main() method and InputException with the relevant error message.
         </p>
+
+        <details>
+          <summary>public void WidthAndHeightValidate(int width, int height)</summary>
+          Method checks if the widht and height are in the described in the requirement range.
+       </details>
+
+       <details>
+          <summary>public void InputRowValidation(string row, int width)</summary>
+          Method checks if the row of the matrix is with the correct length and if the elements are either 1 or 0.
+       </details>
+
+       <details>
+         <summary>public void TargetDimensionsValitate(int targetCol, int targetRow, int width, int height)</summary>
+         Method checks if the target element is in the matrix dimension.
+       </details>
+
+       <details>
+         <summary>public void WrongFormat()</summary>
+         This methods extends the built-in validation for parsing the string/char elements to a integer.
+         It throws the custom exception with the custom message
+       </details>
+
       </div>
 
       <div id="adjMatrix" class="hiddenValue">
         <h2>Adjacency Matrix class</h2>
+
         <figure class="floatFigure">
           <img  src="ClassStructureImages\AdjMat.jpg" alt="AdjacencyMatrix class">
           <figcaption>Adjacency Matrix class</figcaption>
@@ -99,40 +149,42 @@
           for keeping the addresses of all the node elements which has to be updated. 
           Then the methods are keeping all the logic that is essential for all the operations that could be done over the custom matrix.
           The program will first book the addresses of the elements that need to be updated and after that it does the updating on a different step.
-          This will protect from element to be changed on the go and change the final result to an incorrect value.
+          This will protect from element to be updated on the go and change the final result to an incorrect value.
         </p>
+
         <details>
-            <summary>- public void CountGreenNeighbours()</summary>
-            This method iterates the matrix and checks the neighbours of each node element. It updates the GreenNeighboursCount
-             for each node on each iteration. In the same iteration the method checks, if the node needs to be updated.
-             If it needs to be updated, its coordinates are booked in the UpdateCoordinates property.              
+          <summary>- public void CountGreenNeighbours()</summary>
+          This method iterates the matrix and checks the neighbours of each node element. It updates the GreenNeighboursCount
+          for each node on each iteration. In the same iteration the method checks, if the node needs to be updated.
+          If it needs to be updated, its coordinates are booked in the UpdateCoordinates property.              
         </details>
 		
-		<details>
-           <summary>- public void InitialNeighboursAllocate()</summary>
-           This method is ran only once after the matrix is filled up with its data. This will save neighbour allocation on each iteration. 
+		    <details>
+          <summary>- public void InitialNeighboursAllocate()</summary>
+          This method is ran only once after the matrix is filled up with its data. This will save neighbour allocation on each iteration. 
         </details>
 
         <details>
-           <summary>- private void NeighboursAllocate(Node currentNode, int row, int col)</summary>
-           Separated method responsible only for allocating the neighbours which are checked first if they are in the matrix
-           boundaries
+          <summary>- private void NeighboursAllocate(Node currentNode, int row, int col)</summary>
+          Separated method responsible only for allocating the neighbours which are checked first if they are in the matrix boundaries.
+          
         </details>
 		
         <details>
-            <summary>- public void UpdateMatrix()</summary>
-            Method for updating the matrix on each iteration. It finds all the nodes that are booked in the UpdateCoordinates 
-           property.
+          <summary>- public void UpdateMatrix()</summary>
+          Method for updating the matrix on each iteration. It finds all the nodes that are booked in the UpdateCoordinates property.          
         </details>
        
       </div>
 
       <div id="inpExcep" class="hiddenValue">
         <h2>Input Exception class</h2>
+
         <figure class="floatFigure">
           <img  src="ClassStructureImages\InpEx.jpg" alt="Input Exception class">
           <figcaption>Input exception class</figcaption>
         </figure> 
+
         <p>
           This is custom exception class that inherits from System.Exception. 
           It is used in the application to throw exception of this type if the input is invalid.
@@ -141,10 +193,12 @@
 
       <div id="iNode" class="hiddenValue">
         <h2>INode interface</h2>
+
         <figure class="floatFigure">
           <img  src="ClassStructureImages\NodeInheritance.jpg" alt="Node inherit structure class">
           <figcaption>The node inheriatance structure class</figcaption>
         </figure>
+
         <p>
           The interface holds the actual structure of the Node element. It keeps all the members, which needs to be implemented 
           in all the classes that are using this contract.
@@ -153,10 +207,12 @@
 
       <div id="node" class="hiddenValue">
         <h2>Abstract Node class</h2>
+
         <figure class="floatFigure">
           <img  src="ClassStructureImages\NodeInheritance.jpg" alt="Node inherit structure class">
           <figcaption>The node inheriatance structure class</figcaption>
         </figure>
+
         <p>
           The abstract parent class Node implements the INode interface and its members. It contains the base properties which are typical
           for the Node element and also keeps abstract members (properties and methods), which are left for the more specific child 
@@ -166,30 +222,53 @@
 
       <div id="greenNode" class="hiddenValue">
         <h2>Green Node Child class</h2>
+
         <figure class="floatFigure">
           <img  src="ClassStructureImages\NodeInheritance.jpg" alt="Node inherit structure class">
           <figcaption>The node inheriatance structure class</figcaption>
         </figure>
+
         <p>
           This child class implements the main Node structure and adds the relevant implementation of the abstract methods.
-          It`s property CurrentValue will return the char value of '1'. The boolean RequireUpdate() method will return true if the 
-          count of the green neighbours of the node is equal to 0, 1, 4, 5, 7 or 8. If it is equal to 2, 3, or 6 it will not
-          require an update. 
-          Then the Update() method returns a new Node with "colored red" of type RedNode, and will copy the neighbours.
+          It`s property CurrentValue will return the char value of '1'.
         </p>
+
+        <details>
+          <summary>public override bool RequiresUpdate()</summary>      
+          This method will return true only if the count of the green neighbours of the node is equal to 0, 1, 4, 5, 7 or 8.
+          If it is equal to 2, 3, or 6 it will not require an update. 
+          If the count is any different than the stated one the node will not be updated and will stay the same.            
+        </details>
+
+        <details>
+          <summary> public override INode Update()</summary>
+          This method returns a new Node of type RedNode, and will copy the neighbours.
+        </details>
+        
       </div>
 
       <div id="redNode" class="hiddenValue">
         <h2>Red Node child class</h2>
+
         <figure class="floatFigure">
           <img  src="ClassStructureImages\NodeInheritance.jpg" alt="Node inherit structure class">
           <figcaption>The node inheriatance structure class</figcaption>
         </figure>
+
         <p> This child class implements the main Node structure and adds the relevant implementation of the abstract methods.
-          It`s property CurrentValue will return the char value of '0'. The boolean RequireUpdate() method will return true only if the 
-          count of the green neighbours of the node is equal to 3 or 6. If the count is any different than the stated one the node will not be
-          updated and will stay the same.
-          Then the Update() method returns a new Node GreenNode, and will copy the neighbours.</p>
+          It`s property CurrentValue will return the char value of '0'. 
+        </p>
+
+        <details>
+          <summary>public override bool RequiresUpdate()</summary>      
+          This method will return true only if the count of the green neighbours of the node is equal to 3 or 6.
+          If the count is any different than the stated one the node will not be updated and will stay the same.            
+        </details>
+
+        <details>
+         <summary> public override INode Update()</summary>
+         This method returns a new Node of type GreenNode, and will copy the neighbours.
+        </details>
       </div>      
 </body>
 

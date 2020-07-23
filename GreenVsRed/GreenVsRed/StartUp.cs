@@ -8,8 +8,7 @@ namespace GreenVsRed
 {
     public static class StartUp
     {
-        //Declaring the static variables, which will be asigned with values from the input
-        //and will be used from the engine class
+        //Declaring the static variables, which will be asigned with values from the input and will be used from the engine class
         static int width;
         static int height;
         static int targetCol;
@@ -20,7 +19,13 @@ namespace GreenVsRed
         const string nullMatrixMessage = "Matrix is null";
         const string inputErrorMessage = "Input exception: ";
 
-        public static void Main(string[] args)
+        /// <summary>
+        /// The Main() method creates an instances of the AdjacencyMatrix class and the Engine class. Then it asigns all the input from the
+        /// static variables to the matrix and runs the Engine.Start() method passing the target element data for receiving the result
+        /// and printing it to the console as required.
+        /// </summary>
+
+        public static void Main()
         {           
             try
             {
@@ -55,8 +60,8 @@ namespace GreenVsRed
                     }
                 }
 
-                //Initialize the Engine class and injecting a reference of the completed matrix.
-                //Invoke the Start(...) method for extracting the result
+                //1. Initializing the Engine class and injecting a reference of the completed matrix.
+                //2. Invoking the Engine.Start(...) method for extracting the result
                 var engine = new Engine(matrix);
                 var result = engine.Start(targetRow, targetCol, generationsCount);
 
@@ -76,18 +81,17 @@ namespace GreenVsRed
                 Console.WriteLine(exception.Message);
             }
         }
-       
+
         /// <summary>
-        /// For readability I have moved the static input reading below the Main() method
+        /// For readability I have moved the static input reading method below the Main() method
+        /// Reading and checking the input and after that extracting and parsing the required parts
         /// </summary>
         public static void ReadInput()
         {
             var validator = new InputValidator();
 
-            //Reading and checking the input and extracting and parsing the required parts 
-            //I have decided to do all the element checks on the user's input level
-            //The alternative place for the checks of the elements can be the relevant 
-            //class (Node or AdjacencyMatrix), when asigning.
+            //I have decided to do all the element checkings on the user's input level
+            //The alternative place for these checks could be the relevant class (Node or AdjacencyMatrix), when asigning.
             string[] gridDimensionElements = Console.ReadLine()
                 .Split(commaSeparator, StringSplitOptions.RemoveEmptyEntries);
 

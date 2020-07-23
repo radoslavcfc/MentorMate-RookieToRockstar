@@ -2,6 +2,9 @@
 
 namespace GreenVsRed
 {
+    /// <summary>
+    /// Class responsible for checking the input 
+    /// </summary>
     public class InputValidator
     {
         //All the messages are kept in constant variables:
